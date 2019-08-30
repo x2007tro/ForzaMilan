@@ -1,5 +1,9 @@
 source("private.R")
 
+# test code
+#test_json_file <- "http://www.fantasysportnet.com/data/feed?week=0812&league=test&season=1617&apiKey=FSN8776143&format=json"
+#test_json_data <- jsonlite::fromJSON(test_json_file)
+
 # extract data function
 ExtractData <- function(week, season, league){
   json_file <- paste0("http://www.fantasysportnet.com/data/feed",
@@ -13,24 +17,24 @@ ExtractData <- function(week, season, league){
 }
 
 # parameters
-leagues <- c("epl", "blg", "isa", "spd", "l1")[3]
+leagues <- c("epl", "blg", "isa", "spd", "l1")[4]
 
 seasons <- list(
   s1 = list(
     season = '1516',
-    weeks = seq(as.Date("2015-07-31"), by = "week", length.out = 45)
+    weeks = seq(as.Date("2015-08-07"), by = "week", length.out = 50)
   ),
   s2 = list(
     season = '1617',
-    weeks = seq(as.Date("2016-07-29"), by = "week", length.out = 45)
+    weeks = seq(as.Date("2016-07-29"), by = "week", length.out = 50)
   ),
   s3 = list(
     season = '1718',
-    weeks = seq(as.Date("2017-07-28"), by = "week", length.out = 45)
+    weeks = seq(as.Date("2017-07-28"), by = "week", length.out = 50)
   ),
   s4 = list(
     season = '1819',
-    weeks = seq(as.Date("2018-07-27"), by = "week", length.out = 45)
+    weeks = seq(as.Date("2018-07-27"), by = "week", length.out = 50)
   ),
   s5 = list(
     season = '1920',
@@ -60,11 +64,12 @@ raw_data <- lapply(leagues, function(lea){
       return(tmp_data)
     })
     names(tmp_data) <- format(sea$weeks, "%y%m%d")
+    tmp_data <- tmp_data[which(!sapply(tmp_data, is.null))]
     return(tmp_data)
   })
   names(tmp_data) <- unlist(lapply(seasons, "[", 1))
   return(tmp_data)
 })
 names(raw_data) <- leagues
-isa <- raw_data
-save(isa, file = "isa.RData")
+spd <- raw_data
+save(spd, file = "spd.RData")
