@@ -79,8 +79,8 @@ names(raw_data) <- leagues
 # save raw data
 if(!dir.exists('./Private/Data')){
   dir.create('./Private/Data')
-  if(!dir.exists('./Private/Data/Raw')){
-    dir.create('./Private/Data/Raw')
-  }
+}
+if(!dir.exists(paste0('./Private/Data/DB Feed ',process_date))){
+  dir.create(paste0('./Private/Data/DB Feed ',process_date))
 }
 saveRDS(raw_data, file = "./Private/Data/Raw/snd.RDs")
