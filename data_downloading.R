@@ -1,4 +1,4 @@
-source("private.R")
+source("./Private/Code/api_keys.R")
 
 # test code
 #test_json_file <- "http://www.fantasysportnet.com/data/feed?week=0812&league=test&season=1617&apiKey=FSN8776143&format=json"
@@ -17,28 +17,32 @@ ExtractData <- function(week, season, league){
 }
 
 # parameters
-leagues <- c("epl", "blg", "isa", "spd", "l1")[4]
+leagues <- c("epl", "blg", "isa", "spd", "l1")
 
 seasons <- list(
-  s1 = list(
-    season = '1516',
-    weeks = seq(as.Date("2015-08-07"), by = "week", length.out = 50)
-  ),
-  s2 = list(
-    season = '1617',
-    weeks = seq(as.Date("2016-07-29"), by = "week", length.out = 50)
-  ),
-  s3 = list(
-    season = '1718',
-    weeks = seq(as.Date("2017-07-28"), by = "week", length.out = 50)
-  ),
-  s4 = list(
-    season = '1819',
-    weeks = seq(as.Date("2018-07-27"), by = "week", length.out = 50)
-  ),
-  s5 = list(
+  # s1 = list(
+  #   season = '1516',
+  #   weeks = seq(as.Date("2015-08-07"), by = "week", length.out = 50)
+  # ),
+  # s2 = list(
+  #   season = '1617',
+  #   weeks = seq(as.Date("2016-07-29"), by = "week", length.out = 50)
+  # ),
+  # s3 = list(
+  #   season = '1718',
+  #   weeks = seq(as.Date("2017-07-28"), by = "week", length.out = 50)
+  # ),
+  # s4 = list(
+  #   season = '1819',
+  #   weeks = seq(as.Date("2018-07-27"), by = "week", length.out = 50)
+  # ),
+  # s5 = list(
+  #   season = '1920',
+  #   weeks = seq(as.Date("2019-07-26"), by = "week", length.out = 5)
+  # ),
+  s6 = list(
     season = '1920',
-    weeks = seq(as.Date("2019-07-26"), by = "week", length.out = 5)
+    weeks = seq(as.Date("2019-08-30"), by = "week", length.out = 5)
   )
 )
 
@@ -71,5 +75,12 @@ raw_data <- lapply(leagues, function(lea){
   return(tmp_data)
 })
 names(raw_data) <- leagues
-spd <- raw_data
-save(spd, file = "spd.RData")
+
+# save raw data
+if(!dir.exists('./Private/Data')){
+  dir.create('./Private/Data')
+  if(!dir.exists('./Private/Data/Raw')){
+    dir.create('./Private/Data/Raw')
+  }
+}
+saveRDS(raw_data, file = "./Private/Data/Raw/snd.RDs")
