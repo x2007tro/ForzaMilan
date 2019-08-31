@@ -1,0 +1,61 @@
+/*  
+ * general
+ */ 
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	border: 0;
+}
+
+/*
+ * Frame setting
+ */
+.block_outter_frame {
+  border:0;
+  border-radius:5px;
+  margin:0;
+  padding:0;
+  position:relative;
+}
+
+.block_inner_frame {
+  border:0;
+  margin:0 0 0 3px;    /* set left margin to 3px */
+  padding:0;
+}
+
+/*
+ * App specific settings
+ */
+.block_title {
+  padding:3px 0;
+  color:rgba(255,250,250,1);     /* snow */
+  font-weight:bold;
+}
+.day_floater1, .day_floater2 {
+  width:14%;
+  float:left;
+  margin:0 2px 0 0;
+}
+.block_wkdy {
+  padding:3px 0;
+  color:black;
+  font-weight:bold;
+}
+.day_styler {
+  background-color:rgba(202, 0, 42, 0);
+}
+.day_spacer {
+  width:100%;
+  height:5px;
+}
+.block_event1 {
+  padding:3px 0;
+  color:gray;
+  font-weight:bold;
+}
+.block_event2 {
+  padding:3px 0;
+  color:black;
+  font-weight:bold;
+}

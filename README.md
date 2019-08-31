@@ -3,6 +3,7 @@ Analyze soccer game stats to help Milan scouting
 
 ## Webapp design
 - tab Player selection
+  - options: position, age min/max, height min/max, league, dribbling, sprintspeed, agility, strength 
 - tab Metrics
   - one table
 - tab Graph
