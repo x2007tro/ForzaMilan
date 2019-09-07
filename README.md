@@ -5,11 +5,10 @@ Analyze soccer game stats to help Milan scouting
 - tab Player selection
   - options: position, age min/max, height min/max, league, dribbling, sprintspeed, agility, strength 
 - tab Metrics
-  - one table
-- tab Graph
-  - season 1 (filter by player name and metric)
-  - season 2 (filter by player name and metric)
-  - ...
+  - one table outline the recent match stats and key attributes from FIFA19
+- tab Player Profile
+  - once players are selected, his personal files can be retrieved
+
 
 ## Package required
 - require(shiny)

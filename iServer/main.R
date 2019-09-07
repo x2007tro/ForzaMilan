@@ -6,11 +6,11 @@ mainServer <- function(input, output, session) {
   ##
   # Schedule initialization
   ##
-  source("./iServer/fileupload.R", local = TRUE)
+  source("./iServer/player_select.R", local = TRUE)
   
   ##
   # fitness calendar view
   ##
-  source("./iServer/fitness.R", local = TRUE)
+  source("./iServer/player_stats.R", local = TRUE)
   
 }

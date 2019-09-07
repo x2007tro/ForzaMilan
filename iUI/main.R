@@ -1,7 +1,7 @@
 ##
 # Source all ui files
 ##
-ui_files <- c("player_select")
+ui_files <- c("player_select", "player_stats")
 lapply(ui_files, function(f){
   source(paste0("./iUI/", f, ".R"), local = FALSE)
 })
@@ -30,8 +30,8 @@ mainUI <- fluidPage(theme = shinythemes::shinytheme("simplex"),
       navlistPanel(
        "Index",
        widths = c(2, 10),
-       tp_player_select
-       
+       tp_player_select,
+       tp_player_stats
       )
     ),
     
