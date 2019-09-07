@@ -8,7 +8,8 @@ Analyze soccer game stats to help Milan scouting
   - one table outline the recent match stats and key attributes from FIFA19
 - tab Player Profile
   - once players are selected, his personal files can be retrieved
-
+  - stats include: name, picture, country, stats from metrics tables
+  - graph include: historical performance from metrics table
 
 ## Package required
 - require(shiny)

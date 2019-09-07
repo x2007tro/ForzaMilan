@@ -15,6 +15,10 @@ tp_player_stats <- tabPanel(
           
           fluidRow(
             column(12, DT::dataTableOutput(paste0('play_stats_tbl_opt', i)))
+          ),
+          
+          fluidRow(
+            column(12, actionButton(paste0('prof', i), 'Retrieve Selected Player Profiles'))
           )
           
         )

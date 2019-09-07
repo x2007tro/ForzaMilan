@@ -1,8 +1,6 @@
 ##
 # render summary stats output
-observeEvent(input$get_sum_stats, {
-  
-  
+player_sum_stats <- reactive({
   withProgress(message = 'Getting player summary status ...', {
     # text input rendering
     plyr_nms2 <- gsub("'", "''", input$plyr_nms)
@@ -35,9 +33,14 @@ observeEvent(input$get_sum_stats, {
                   ")")
     res <- GetQueryResFromDB(db_object, qry)
   })
+  return(res)
+})
+
+
+observeEvent(input$get_sum_stats, {
   
   lapply(1:length(seasons), function(i){
-    player_stats <- res %>% 
+    player_stats <- player_sum_stats() %>% 
       dplyr::filter(season == seasons[i])
     
     output[[paste0('play_stats_tbl_opt', i)]] <- DT::renderDataTable({
