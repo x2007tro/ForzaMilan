@@ -20,7 +20,7 @@ tp_player_select <- tabPanel(
       
       fluidRow(
         column(3, tags$b(numericInput("bi_min_age", "Min Age", value = 0, width = "100%"))),
-        column(3,tags$b(numericInput("bi_max_age", "Max Age", value = 30, width = "100%"))),
+        column(3,tags$b(numericInput("bi_max_age", "Max Age", value = 25, width = "100%"))),
 
       #),
       #
@@ -41,14 +41,14 @@ tp_player_select <- tabPanel(
       shypka.ddiv(tags$h3(class = "block_title", "FIFA19 Stats"), color = "rgba(105,105,105,1)"),  # dimgray
       
       fluidRow(
-        column(3, tags$b(numericInput("fa19_min_spd", "Min Speed", value = 50, width = "100%"))),
+        column(3, tags$b(numericInput("fa19_min_spd", "Min Speed", value = 70, width = "100%"))),
         column(3, tags$b(numericInput("fa19_min_str", "Min Strength", value = 50, width = "100%"))),
         
       # ),
       # 
       # fluidRow(
         column(3, tags$b(numericInput("fa19_min_drb", "Min Dribbling", value = 50, width = "100%"))),
-        column(3, tags$b(numericInput("fa19_min_agl", "Max Agility", value = 50, width = "100%")))
+        column(3, tags$b(numericInput("fa19_min_agl", "Max Agility", value = 70, width = "100%")))
       )
     )
   ),

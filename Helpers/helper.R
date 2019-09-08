@@ -63,3 +63,29 @@ GetQueryResFromDB <- function(db_obj, qry_str){
   DBI::dbDisconnect(conn)
   return(res)
 }
+
+##
+# PLot
+##
+UtilPlotPlayerPerf <- function(master_plot_data, metric, seas, leag){
+  
+  tmp_data <- master_plot_data
+  if(seas != "all"){
+    tmp_data <- tmp_data %>% 
+      dplyr::filter(season == seas)
+  } 
+  
+  if(leag != "all"){
+    tmp_data <- tmp_data %>% 
+      dplyr::filter(league == leag)
+  } 
+  
+  my_plot <- ggplot(tmp_data, aes_string(x = 'matchDate', y = metric, color = 'name')) +
+    geom_line() +
+    ggtitle(paste0(metric)) +
+    #labs(caption = paste0("Plot produced on ", format(Sys.time(), "%Y-%m-%d %H:%M:%S"))) +
+    theme_pka() +
+    theme(line = element_line(size = 1))
+  
+  return(my_plot)
+}
