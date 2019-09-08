@@ -11,14 +11,14 @@ tp_player_stats <- tabPanel(
         tabPanel(
           paste0("Season ", seasons[i]),
           
-          shypka.ddiv(tags$h3(class = "block_title", "Summary Stats"), color = "rgba(105,105,105,1)"),  # dimgray
+          shypka.ddiv(tags$h3(class = "block_title", "Summary Stats"), color = default_header_color),  # dimgray
           
           fluidRow(
             column(12, DT::dataTableOutput(paste0('play_stats_tbl_opt', i)))
           ),
           
           fluidRow(
-            column(12, actionButton(paste0('ret_prof', i), 'Retrieve Selected Player Profiles'))
+            column(12, actionButton(paste0('ret_prof', i), class = 'btn-success', 'Retrieve Selected Player Profiles'))
           )
           
         )

@@ -41,7 +41,8 @@ observeEvent(input$get_sum_stats, {
   
   lapply(1:length(seasons), function(i){
     player_stats <- player_sum_stats() %>% 
-      dplyr::filter(season == seasons[i])
+      dplyr::filter(season == seasons[i]) %>% 
+      dplyr::select(-season)
     
     output[[paste0('play_stats_tbl_opt', i)]] <- DT::renderDataTable({
       DT::datatable(
@@ -61,7 +62,8 @@ observeEvent(input$get_sum_stats, {
       DT::formatCurrency("foulsDrawn", currency = "", digits = 2) %>% 
       DT::formatCurrency("fouls", currency = "", digits = 2) %>% 
       DT::formatCurrency("ownGoal", currency = "", digits = 2) %>% 
-      DT::formatCurrency("saves", currency = "", digits = 2)
+      DT::formatCurrency("saves", currency = "", digits = 2) %>% 
+      DT::formatStyle(colnames(player_stats), color = 'black')
       # DT::formatCurrency("penaltyScored", currency = "", digits = 2) %>% 
       # DT::formatCurrency("penaltyMissed", currency = "", digits = 2) %>% 
       # DT::formatCurrency("penaltyConceded", currency = "", digits = 2) %>% 

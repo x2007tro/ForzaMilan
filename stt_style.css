@@ -32,6 +32,11 @@ body {
   color:rgba(255,250,250,1);     /* snow */
   font-weight:bold;
 }
+.block_title2 {
+  padding:3px 0;
+  color:rgba(0,0,0,1);     /* black */
+  font-weight:bold;
+}
 .day_floater1, .day_floater2 {
   width:14%;
   float:left;

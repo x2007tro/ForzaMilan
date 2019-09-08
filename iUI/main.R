@@ -9,7 +9,7 @@ lapply(ui_files, function(f){
 ##
 # Shiny ui
 ##
-mainUI <- fluidPage(theme = shinythemes::shinytheme("simplex"),
+mainUI <- fluidPage(theme = shinythemes::shinytheme("cyborg"),
   
   # css style
   tags$head(

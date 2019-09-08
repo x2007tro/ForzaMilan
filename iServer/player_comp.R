@@ -21,13 +21,13 @@ lapply(1:length(seasons), function(i){
         fluidRow(
           column(
             3,
-            shypka.ddiv(tags$h4(class = "block_title", "Filter"), color = "rgba(105,105,105,1)"),  # dimgray
+            shypka.ddiv(tags$h4(class = "block_title", "Filter"), color = default_header_color),  # dimgray
             selectInput(paste0('s', i, 'ply_comp', '_metric'), 'Metric', selected = colnames(stats_graph)[5], 
                         choices = colnames(stats_graph)[5:length(colnames(stats_graph))], selectize = FALSE)
           ),
           column(
             6,
-            shypka.ddiv(tags$h4(class = "block_title", "Historical Stats"), color = "rgba(105,105,105,1)"),  # dimgray
+            shypka.ddiv(tags$h4(class = "block_title", "Historical Stats"), color = default_header_color),  # dimgray
             plotOutput(paste0('s', i, 'ply_comp_plot'))
           )
         )

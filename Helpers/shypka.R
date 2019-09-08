@@ -4,7 +4,7 @@
 require(shiny)
 shypka.ddiv <- function(
   ui_element, 
-  color = "rgba(220, 220, 220, 0)",
+  color = "rgba(0, 0, 0, 1)",
   frame_cln = "block_outter_frame", 
   content_cln = "block_inner_frame"){
   

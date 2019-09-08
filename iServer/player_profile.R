@@ -50,7 +50,7 @@ lapply(1:length(seasons), function(i){
                   column(
                     3,
                     
-                    shypka.ddiv(tags$h4(class = "block_title", "Basic"), color = "rgba(105,105,105,1)"),  # dimgray
+                    shypka.ddiv(tags$h4(class = "block_title2", "Basic"), color = sec_header_color),  # dimgray
                     
                     lapply(1:ncol(prof_basic), function(z){
                       if(colnames(prof_basic)[z] == 'Photo'){
@@ -67,7 +67,7 @@ lapply(1:length(seasons), function(i){
                   column(
                     3,
                     
-                    shypka.ddiv(tags$h4(class = "block_title", "Ratings"), color = "rgba(105,105,105,1)"),  # dimgray
+                    shypka.ddiv(tags$h5(class = "block_title2", "Ratings"), color = sec_header_color),  # dimgray
                     
                     lapply(2:15, function(z){
                         tags$h4(paste0(colnames(prof_rate)[z], ': ', prof_rate[1,z]))
@@ -79,7 +79,7 @@ lapply(1:length(seasons), function(i){
                   column(
                     3,
                     
-                    shypka.ddiv(tags$h4(class = "block_title", "Ratings"), color = "rgba(105,105,105,1)"),  # dimgray
+                    shypka.ddiv(tags$h5(class = "block_title2", "Ratings"), color = sec_header_color),  # dimgray
                     
                     lapply(16:29, function(z){
                       tags$h4(paste0(colnames(prof_rate)[z], ': ', prof_rate[1,z]))
@@ -91,7 +91,7 @@ lapply(1:length(seasons), function(i){
                   column(
                     3,
                     
-                    shypka.ddiv(tags$h4(class = "block_title", "Ratings"), color = "rgba(105,105,105,1)"),  # dimgray
+                    shypka.ddiv(tags$h5(class = "block_title2", "Ratings"), color = sec_header_color),  # dimgray
                     
                     lapply(30:ncol(prof_rate), function(z){
                       tags$h4(paste0(colnames(prof_rate)[z], ': ', prof_rate[1,z]))
@@ -109,7 +109,7 @@ lapply(1:length(seasons), function(i){
                     fluidRow(
                       column(
                         3,
-                        shypka.ddiv(tags$h4(class = "block_title", "Filter"), color = "rgba(105,105,105,1)"),  # dimgray
+                        shypka.ddiv(tags$h4(class = "block_title2", "Filter"), color = sec_header_color),  # dimgray
                         selectInput(paste0('s', i, 'ply', j, '_metric'), 'Metric', selected = colnames(stats_graph)[5], 
                                     choices = colnames(stats_graph)[5:length(colnames(stats_graph))], selectize = FALSE),
                         selectInput(paste0('s', i, 'ply', j, '_season'), 'Season', selected = 'all', choices = c('all', unique(stats_graph$season)), selectize = FALSE),
@@ -117,7 +117,7 @@ lapply(1:length(seasons), function(i){
                       ),
                       column(
                         6,
-                        shypka.ddiv(tags$h4(class = "block_title", "Historical Stats"), color = "rgba(105,105,105,1)"),  # dimgray
+                        shypka.ddiv(tags$h4(class = "block_title2", "Historical Stats"), color = sec_header_color),  # dimgray
                         plotOutput(paste0('s', i, 'ply_plot',j))
                       )
                     )

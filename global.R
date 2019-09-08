@@ -9,6 +9,8 @@ season_tbl <- '300_030_AllSeasons'
 position_tbl <- '300_020_AllPositions'
 player_name_tbl <- '300_030_AllPlayerNames'
 player_rec_ret_threshold <- 200
+default_header_color <- 'rgba(192,192,192,0)'
+sec_header_color <- '#CF6679' 
 
 ##
 # shinyapp input
