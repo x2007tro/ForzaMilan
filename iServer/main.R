@@ -17,4 +17,9 @@ mainServer <- function(input, output, session) {
   # player profile
   ##
   source("./iServer/player_profile.R", local = TRUE)
+  
+  ##
+  # player visual comparison
+  ##
+  source("./iServer/player_comp.R", local = TRUE)
 }

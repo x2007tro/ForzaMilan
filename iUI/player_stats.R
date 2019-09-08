@@ -18,7 +18,7 @@ tp_player_stats <- tabPanel(
           ),
           
           fluidRow(
-            column(12, actionButton(paste0('prof', i), 'Retrieve Selected Player Profiles'))
+            column(12, actionButton(paste0('ret_prof', i), 'Retrieve Selected Player Profiles'))
           )
           
         )

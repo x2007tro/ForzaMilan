@@ -4,7 +4,9 @@
 
 lapply(1:length(seasons), function(i){
   
-  observeEvent(input[[paste0('prof', i)]], {
+  observeEvent(input[[paste0('ret_prof', i)]], {
+    player_stats <- player_sum_stats() %>% 
+      dplyr::filter(season == seasons[i])
     
     output$play_prof_content <- renderUI(
       tagList(
@@ -15,33 +17,33 @@ lapply(1:length(seasons), function(i){
           column(
             12,
             
-            do.call(tabsetPanel, c(lapply(1:length(input[[paste0('play_stats_tbl_opt', i, '_rows_selected')]]), function(j) {
+            do.call(tabsetPanel, c(lapply(input[[paste0('play_stats_tbl_opt', i, '_rows_selected')]], function(j) {
               # Get data from DB
               withProgress(message = 'Getting player profile ...', {
                 # build query
                 qry <- paste0("SELECT *
                               FROM 700_030_PlayerProfiles_Basic
-                              WHERE (([700_030_PlayerProfiles_Basic].Name) = '", player_sum_stats()$name[j],
+                              WHERE (([700_030_PlayerProfiles_Basic].Name) = '", player_stats$name[j],
                               "')")
                 prof_basic <- GetQueryResFromDB(db_object, qry)
                 
                 # build query
                 qry <- paste0("SELECT *
                               FROM 700_050_PlayerProfiles_Rating
-                              WHERE (([700_050_PlayerProfiles_Rating].Name) = '", player_sum_stats()$name[j],
+                              WHERE (([700_050_PlayerProfiles_Rating].Name) = '", player_stats$name[j],
                               "')")
                 prof_rate <- GetQueryResFromDB(db_object, qry)
                 
                 # build query
                 qry <- paste0("SELECT *
                               FROM 800_030_PlayerProfiles_Graph
-                              WHERE (([800_030_PlayerProfiles_Graph].name) = '", player_sum_stats()$name[j],
+                              WHERE (([800_030_PlayerProfiles_Graph].name) = '", player_stats$name[j],
                               "')")
                 stats_graph <- GetQueryResFromDB(db_object, qry)
               })
               
               tabPanel(
-                player_sum_stats()$name[j],   # tabpanel 
+                player_stats$name[j],   # tabpanel 
                 
                 fluidRow(
                   # basic info
@@ -132,12 +134,12 @@ lapply(1:length(seasons), function(i){
     )
     
     # render plot
-    lapply(1:length(input[[paste0('play_stats_tbl_opt', i, '_rows_selected')]]), function(j){
+    lapply(input[[paste0('play_stats_tbl_opt', i, '_rows_selected')]], function(j){
       
       # build query
       qry <- paste0("SELECT *
                     FROM 800_030_PlayerProfiles_Graph
-                    WHERE (([800_030_PlayerProfiles_Graph].name) = '", player_sum_stats()$name[j],
+                    WHERE (([800_030_PlayerProfiles_Graph].name) = '", player_stats$name[j],
                     "')")
       stats_graph <- GetQueryResFromDB(db_object, qry)
       

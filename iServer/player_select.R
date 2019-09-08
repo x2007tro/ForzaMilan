@@ -1,7 +1,6 @@
 ##
 # PLAYER Select function
 ##
-
 observeEvent({ 
   input$bi_pos
   input$bi_leg
