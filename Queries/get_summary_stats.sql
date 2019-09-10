@@ -1,0 +1,23 @@
+SELECT `600_050_MasterSummaryStatsAndAttrbs`.season, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.league, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.team, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.name, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Age, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Nationality, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Height, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Position, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Dribbling, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.SprintSpeed, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Agility, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.Strength, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.playTime, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.shots, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.shotsOnTarget, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.goals, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.assists, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.foulsDrawn, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.fouls, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.ownGoal, 
+                  `600_050_MasterSummaryStatsAndAttrbs`.saves
+                  FROM 600_050_MasterSummaryStatsAndAttrbs
+                  WHERE ((`600_050_MasterSummaryStatsAndAttrbs`.name) in @ply_nm_str)

@@ -11,9 +11,8 @@ lapply(1:length(seasons), function(i){
     ply_nm_str <- paste0("(", paste0("\'", plyr_nms2, "\'", collapse = ","), ")")
     
     # build query
-    qry <- paste0("SELECT * FROM 800_030_PlayerProfiles_Graph
-                  WHERE (([800_030_PlayerProfiles_Graph].name) in ", ply_nm_str,
-                  ")")
+    qry <- readr::read_file('./Queries/get_player_graph_profile_by_names.sql')
+    qry <- gsub('@ply_nm_str', ply_nm_str, qry)
     stats_graph <- GetQueryResFromDB(db_object, qry)
     
     output$play_comp_content <- renderUI({

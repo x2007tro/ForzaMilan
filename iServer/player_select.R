@@ -18,19 +18,17 @@ observeEvent({
   leg_cdn_str <- paste0("(", paste0("\'", input$bi_leg, "\'", collapse = ","), ")")
   
   # build string
-  qry <- paste0("SELECT [500_050_MasterDetailedStatsAndAttrbs].name
-                FROM 500_050_MasterDetailedStatsAndAttrbs
-                WHERE ((([500_050_MasterDetailedStatsAndAttrbs].Age)>=", input$bi_min_age,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Age)<=", input$bi_max_age, 
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Height)>=", input$bi_min_height,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Height)<=", input$bi_max_height,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].SprintSpeed)>=", input$fa19_min_spd,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Strength)>=", input$fa19_min_str,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Dribbling)>=", input$fa19_min_drb,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Agility)>=", input$fa19_min_agl, 
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].Position) in ", pos_cdn_str,
-                ") AND (([500_050_MasterDetailedStatsAndAttrbs].league) in ", leg_cdn_str,
-                "))")
+  qry <- readr::read_file('./Queries/get_selected_players.sql')
+  qry <- gsub('@bi_min_age', input$bi_min_age, qry)
+  qry <- gsub('@bi_max_age', input$bi_max_age, qry)
+  qry <- gsub('@bi_min_height', input$bi_min_height, qry)
+  qry <- gsub('@bi_max_height', input$bi_max_height, qry)
+  qry <- gsub('@fa19_min_spd', input$fa19_min_spd, qry)
+  qry <- gsub('@fa19_min_str', input$fa19_min_str, qry)
+  qry <- gsub('@fa19_min_agl', input$fa19_min_agl, qry)
+  qry <- gsub('@fa19_min_drb', input$fa19_min_drb, qry)
+  qry <- gsub('@pos_cdn_str', input$pos_cdn_str, qry)
+  qry <- gsub('@leg_cdn_str', input$leg_cdn_str, qry)
   res <- GetQueryResFromDB(db_object, qry)
   
   ret_names <- unique(res$name)
