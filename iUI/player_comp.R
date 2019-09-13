@@ -2,7 +2,7 @@
 # player compare panel
 tp_player_comp <- tabPanel(
   
-  "Player Visual Comparison",
+  "Player Comparison",
   
   fluidRow(
     column(

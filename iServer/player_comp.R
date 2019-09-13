@@ -11,6 +11,7 @@ lapply(1:length(seasons), function(i){
     ply_nm_str <- paste0("(", paste0("\'", plyr_nms2, "\'", collapse = ","), ")")
     
     # build query
+    print('player_compare started')
     qry <- readr::read_file('./Queries/get_player_graph_profile_by_names.sql')
     qry <- gsub('@ply_nm_str', ply_nm_str, qry)
     stats_graph <- GetQueryResFromDB(db_object, qry)

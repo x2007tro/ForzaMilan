@@ -48,7 +48,7 @@ lapply(1:length(seasons), function(i){
                     
                     lapply(1:ncol(prof_basic), function(z){
                       if(colnames(prof_basic)[z] == 'Photo'){
-                        tags$img(src = prof_basic[1,z], height = '50px', width = '50px')
+                        tags$img(src = prof_basic[1,z], alt = prof_basic[1,z], height = '50px', width = '50px')
                       } else {
                         tags$h4(paste0(colnames(prof_basic)[z], ': ', prof_basic[1,z]))
                       }

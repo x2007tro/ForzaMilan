@@ -1,3 +1,3 @@
 SELECT *
-FROM `800_030_PlayerProfiles_Graph`
-WHERE ((`800_030_PlayerProfiles_Graph`.name) = '@player_name')
+FROM `700_070_PlayerProfiles_Graph`
+WHERE ((`700_070_PlayerProfiles_Graph`.name) = '@player_name')

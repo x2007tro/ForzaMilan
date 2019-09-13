@@ -27,23 +27,25 @@ observeEvent({
   qry <- gsub('@fa19_min_str', input$fa19_min_str, qry)
   qry <- gsub('@fa19_min_agl', input$fa19_min_agl, qry)
   qry <- gsub('@fa19_min_drb', input$fa19_min_drb, qry)
-  qry <- gsub('@pos_cdn_str', input$pos_cdn_str, qry)
-  qry <- gsub('@leg_cdn_str', input$leg_cdn_str, qry)
+  qry <- gsub('@pos_cdn_str', pos_cdn_str, qry)
+  qry <- gsub('@leg_cdn_str', leg_cdn_str, qry)
+  qry <- gsub('@lmt', player_rec_ret_threshold, qry)
+  print(qry)
   res <- GetQueryResFromDB(db_object, qry)
-  
+  print('Player select query finished!')
   ret_names <- unique(res$name)
-  ret_rec_ret <- length(ret_names)
-  if(ret_rec_ret == 0) {
-    ret_names <- player_name[1]
-    flt_msg <- paste0("No player record found.")
-  } 
-  
-  if(ret_rec_ret >= player_rec_ret_threshold) {
-    ret_names <- ret_names[1:player_rec_ret_threshold]
-    flt_msg <- paste0(ret_rec_ret, " player records founds. Only the first ", player_rec_ret_threshold, " results returned.")
-  } else {
-    flt_msg <- paste0(ret_rec_ret, " player records founds.")
-  }
+  # ret_rec_ret <- length(ret_names)
+  # if(ret_rec_ret == 0) {
+  #   ret_names <- player_name[1]
+  #   flt_msg <- paste0("No player record found.")
+  # } 
+  # 
+  # if(ret_rec_ret >= player_rec_ret_threshold) {
+  #   ret_names <- ret_names[1:player_rec_ret_threshold]
+  #   flt_msg <- paste0(ret_rec_ret, " player records founds. Only the first ", player_rec_ret_threshold, " results returned.")
+  # } else {
+     flt_msg <- paste0(length(ret_names), " player records founds.")
+  # }
   
   updateSelectInput(session, "plyr_nms", selected = ret_names)
   output$flt_msg <- renderText(
