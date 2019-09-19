@@ -19,3 +19,4 @@ Analyze soccer game stats to help Milan scouting
 - require(DT)
 - require(RColorBrewer)
 - require(stringi)
+- require(readr)
